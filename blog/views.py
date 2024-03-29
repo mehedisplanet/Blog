@@ -13,6 +13,5 @@ class BlogPagination(pagination.PageNumberPagination):
 class BlogViewSet(viewsets.ModelViewSet):
     queryset = models.Blog.objects.all()
     serializer_class = serializers.BlogSerializer
-    pagination_class = BlogPagination
     filter_backends = [filters.SearchFilter]
     search_fields = ['id','topic','title']

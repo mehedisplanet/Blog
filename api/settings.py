@@ -27,8 +27,24 @@ SECRET_KEY = 'django-insecure-i6$l60%pt*aj9(y3+iuvvu*swooo_8_z7sy%dgg_8j7^f@u6fc
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_ALL_ORIGINS=True
 CSRF_TRUSTED_ORIGINS = ['https://blog-mkrf.onrender.com','https://*.127.0.0.1']
 
+
+CORS_ALLOWED_ORIGINS = [
+    "https://localhost:8080",
+    'https://127.0.0.1:5500',
+    'https://blog-mkrf.onrender.com',
+]
+CORS_ALLOW_METHODS = (
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+)
 
 # Application definition
 
@@ -40,8 +56,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    "corsheaders",
     'django_filters',
     'blog',
+    'contactUs',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +70,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
 ]
 
 ROOT_URLCONF = 'api.urls'
